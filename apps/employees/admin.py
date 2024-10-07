@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Enterprise
+from .models import Employee
 
-admin.site.register(Enterprise)
+admin.site.register(Employee)
