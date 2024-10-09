@@ -1,4 +1,7 @@
+from django.contrib.auth.models import User
 from django.db import models
+from apps.departments.models import Departments
+from apps.companies.models import Enterprise
 
 
 class Employee(models.Model):
@@ -7,6 +10,11 @@ class Employee(models.Model):
 	phone = models.CharField(max_length=15, verbose_name="Telefone", help_text="Telefone de contato")
 	created_at = models.DateTimeField(auto_now_add=True)
 	modified_at = models.DateTimeField(auto_now=True)
+
+	# Relationships
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	departments = models.ManyToManyField(Departments)
+	enterprise = models.ForeignKey(Enterprise, on_delete=models.PROTECT)
 
 
 	class Meta:

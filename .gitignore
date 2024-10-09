@@ -4,3 +4,10 @@ venv
 *__pycache__
 db.sqlite3
 *migrations
+apps/overtime_record/migrations/*
+apps/companies/migrations/*
+apps/documents/migrations/*
+apps/departments/migrations/0001_initial.py
+apps/companies/migrations/0002_alter_enterprise_options.py
+apps/companies/migrations/0001_initial.py
+apps/companies/migrations/__init__.py
