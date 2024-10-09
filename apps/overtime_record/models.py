@@ -1,4 +1,5 @@
 from django.db import models
+from apps.employees.models import Employee
 
 
 class OvertimeRecord(models.Model):
@@ -6,6 +7,9 @@ class OvertimeRecord(models.Model):
 	hours = models.CharField(max_length=5, verbose_name="Horas trabalhadas", help_text="Quantidade de horas trabalhadas?")
 	created_at = models.DateTimeField(auto_now_add=True)
 	modified_at = models.DateTimeField(auto_now=True)
+
+	# Relationships
+	employee = models.ForeignKey(Employee, on_delete=models.PROTECT, verbose_name="Colaborador", null=True)
 
 
 	class Meta:

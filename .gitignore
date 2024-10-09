@@ -3,4 +3,7 @@
 venv
 *__pycache__
 db.sqlite3
-*migrations
+apps/overtime_record/migrations/*
+apps/documents/migrations/*
+apps/departments/migrations/*
+apps/companies/migrations/*

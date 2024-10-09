@@ -1,7 +1,7 @@
 from django.db import models
+from apps.employees.models import Employee
 
-
-# Implementar campo para upload de arquivo
+# TODO: Implementar campo para upload de arquivo
 
 class Documents(models.Model):
 	REASONS_CHOICES = (
@@ -17,7 +17,14 @@ class Documents(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	modified_at = models.DateTimeField(auto_now=True)
 
+	# Relationships
+	employee = models.ForeignKey(Employee, on_delete=models.PROTECT, verbose_name="Colaborador")
+
 	class Meta:
-		# ordering = ['user'] IMPLEMENTAR RELAÇÃO
+		ordering = ['employee']
 		verbose_name = "Documento"
 		verbose_name_plural = "Documentos"
+
+
+	def __str__(self):
+		return self.description
