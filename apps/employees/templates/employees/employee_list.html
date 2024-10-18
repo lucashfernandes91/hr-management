@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block main %}
+	<h1>Colaboradores</h1>
+		<ul>
+			{% for employee in object_list %}
+				<li>{{ employee.name }}</li>
+			{% empty %}
+				<li>Nenhum colaborador foi encontrado.</li>
+			{% endfor %}
+	</ul>
+{% endblock %}
