@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 from apps.departments.models import Departments
 from apps.companies.models import Enterprise
 
@@ -22,6 +23,9 @@ class Employee(models.Model):
 		verbose_name = "Colaborador"
 		verbose_name_plural = "Colaboradores"
 
+
+	def get_absolute_url(self):
+		return reverse('employee_list')
 
 	def __str__(self):
 		return self.name
