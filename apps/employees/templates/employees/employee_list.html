@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 
 {% block main %}
-	<h1>Colaboradores</h1>
+	<h1>Lista de colaboradores</h1>
 		<ul>
 			{% for employee in object_list %}
-				<li>{{ employee.name }}</li>
-			{% empty %}
-				<li>Nenhum colaborador foi encontrado.</li>
+					<a href="{% url 'employee_update' employee.id %}">{{ employee.name }}</a>  -   
+					<a href="{% url 'employee_delete' employee.id %}">Excluir</a>
+					<br>
+				{% empty %}
+					<li>Nenhum colaborador foi encontrado.</li>
 			{% endfor %}
-	</ul>
+		</ul>
+
+	<br>
+	<a href="{% url 'employee_create' %}" class="btn btn-info">Adicionar colaborador</a>
 {% endblock %}
