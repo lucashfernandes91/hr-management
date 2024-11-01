@@ -10,3 +10,6 @@ apps/companies/migrations/*
 apps/licenses/migrations/__init__.py
 apps/employees/migrations/0002_alter_employee_departments_alter_employee_enterprise_and_more.py
 apps/licenses/__init__.py
+apps/companies/migrations/*
+apps/documents/migrations/*
+apps/departments/migrations/*
