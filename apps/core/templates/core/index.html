@@ -7,7 +7,9 @@
 			One of three columns
 		</div>
 		<div class="col-sm">
-			Olá, {{ user.employee.name }}
+			Olá, {{ user.employee.name }}  <br>
+			<a href="{% url 'employee_list' %}">Lista de colaboradores</a> <br>
+			<a href="{% url 'department_list' %}">Lista departamentos</a>
 		</div>
 		<div class="col-sm">
 			<a href="{% url 'logout' %}">Logout</a> |

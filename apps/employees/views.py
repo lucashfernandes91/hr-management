@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 from .models import Employee
@@ -14,23 +15,21 @@ class EmployeeCreate(CreateView):
 		employee.enterprise = self.request.user.employee.enterprise
 		employee.user = User.objects.create(username=user)
 		employee.save()
+		messages.success(self.request, "{} criado com sucesso!".format(employee.user))
 		return super(EmployeeCreate, self).form_valid(form)
 
 
 class EmployeeList(ListView):
 	model = Employee
 	paginate_by = 10
-
 	
 	def get_queryset(self):
 		employee_looged = self.request.user.employee.enterprise
 		return Employee.objects.filter(enterprise=employee_looged)
-	
 
 class EmployeeUpdate(UpdateView):
 	model = Employee
 	fields = ['name', 'email', 'phone']
-
 
 class EmployeeDelete(DeleteView):
 	model = Employee

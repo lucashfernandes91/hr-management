@@ -11,12 +11,10 @@ class OvertimeRecord(models.Model):
 	# Relationships
 	employee = models.ForeignKey(Employee, on_delete=models.PROTECT, verbose_name="Colaborador", null=True)
 
-
 	class Meta:
 		ordering = ['created_at', 'hours']
 		verbose_name = "Hora extra"
 		verbose_name_plural = "Hora extra"
-
 
 	def __str__(self):
 		return self.reason
