@@ -8,6 +8,14 @@
 </head>
 <body>
 	<div class="container">
+		{% if messages %}
+			{% for message in messages %}
+				<div id="messages" class="alert alert-{{message.tags}}">
+					{{message}}
+				</div>
+			{% endfor %}
+		{% endif %}
+
 	{% block main %} {% endblock %}
 	</div>
 </body>
