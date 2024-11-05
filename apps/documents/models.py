@@ -1,19 +1,19 @@
 from django.db import models
 from apps.employees.models import Employee
 
-# TODO: Implementar campo para upload de arquivo
 
 class Documents(models.Model):
 	REASONS_CHOICES = (
-		('cm', 'Consulta médica'),
-		('lp', 'Licença Paternidade'),
+		('ct', 'Carteira de trabalho'),
+		('cm', 'Carteira de motorista'),
 		('ot', 'Outros'),
 	)
 
 	description = models.CharField(max_length=70, verbose_name="Descrição",
-	                               help_text="Descrição do motivo da ausência")
+	                               help_text="Descrição do documento, caso preciso")
 	document_type = models.CharField(max_length=3, verbose_name="Tipo do documento",
-	                                 choices=REASONS_CHOICES, default="cm")
+	                                 choices=REASONS_CHOICES, default="ct")
+	file  = models.FileField(upload_to="documents")
 	created_at = models.DateTimeField(auto_now_add=True)
 	modified_at = models.DateTimeField(auto_now=True)
 
