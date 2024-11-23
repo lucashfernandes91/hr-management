@@ -6,5 +6,18 @@
 		{% csrf_token %}
 		{{ form.as_p }}
 		<button type="submit" class="btn btn-primary">Salvar</button>
+		<a href="{% url 'employee_list' %}" class="btn btn-info">Voltar</a>
 	</form>
+	<br>
+	{% if object %}
+		<a href="{% url 'document_create' object.id %}" class="btn btn-success">
+			Adicionar documento
+		</a>
+	{% endif %}
+	<br><br>
+
+	<h2>Documentos</h2>
+	{% for document in object.documents_set.all %}
+		<a href="{{ document.file.url }}">{{ document }}</a><br
+	{% endfor %}
 {% endblock %}

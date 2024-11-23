@@ -1,15 +1,16 @@
-from django.views.generic import ListView, UpdateView, DeleteView, CreateView
 from .models import Documents
+from django.views.generic import CreateView
+
 
 class DocumentCreate(CreateView):
-	model = Documents
-	fields = ['document_type', 'description', 'file']
+    model = Documents
+    fields = ['description', 'document_type', 'file']
 
-	# def form_valid(self, form):
-	# 	user = self.request.POST['name'].lower().replace(' ', '_')
-	# 	documen = form.save(commit=False)
-	# 	employee.enterprise = self.request.user.employee.enterprise
-	# 	employee.user = User.objects.create(username=user)
-	# 	employee.save()
-	# 	messages.success(self.request, "{} criado com sucesso!".format(employee.user))
-	# 	return super(EmployeeCreate, self).form_valid(form)
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        form.instance.employee_id = self.kwargs['pk']
+
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
