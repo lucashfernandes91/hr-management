@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block main %}
+	<h1>Registro de banco de horas</h1>		
+		{% for record in object_list %}
+		<li><a href="{% url 'overtime_record_update' record.id %}">{{ record }}</a>
+				<a href="{% url 'overtime_record_delete' record.id %}" class="btn btn-danger">Deletar</a></li>
+			{% empty %}
+				<li>Nenhum registro foi encontrado.</li>
+		{% endfor %}
+	<br>
+	<a href="{% url 'overtime_record_create' %}" class="btn btn-info">Adicionar registro</a>
+{% endblock %}

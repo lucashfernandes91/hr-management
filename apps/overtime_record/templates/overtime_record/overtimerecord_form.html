@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block main %}
+	<h1>Editar dados do registro</h1>
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit" class="btn btn-primary">Salvar</button>{% if object.id %}
+			<a href="{% url 'overtime_record_delete' object.id %}" class="btn btn-danger">Deletar</a>
+		{% endif %}
+		<a href="{% url 'overtime_record_list' %}" class="btn btn-info">Voltar</a>
+	</form>
+	<br>
+{% endblock %}

@@ -18,7 +18,6 @@ class EmployeeCreate(CreateView):
 		messages.success(self.request, "{} criado com sucesso!".format(employee.user))
 		return super(EmployeeCreate, self).form_valid(form)
 
-
 class EmployeeList(ListView):
 	model = Employee
 	paginate_by = 10

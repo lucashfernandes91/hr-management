@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from apps.employees.models import Employee
 
 
@@ -18,3 +19,7 @@ class OvertimeRecord(models.Model):
 
 	def __str__(self):
 		return self.reason
+	
+	def get_absolute_url(self):
+		#return reverse('overtime_record_update', args=[self.id])
+		return reverse('employee_update', args=[self.employee.id])

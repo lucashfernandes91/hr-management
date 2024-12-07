@@ -9,15 +9,31 @@
 		<a href="{% url 'employee_list' %}" class="btn btn-info">Voltar</a>
 	</form>
 	<br>
-	{% if object %}
-		<a href="{% url 'document_create' object.id %}" class="btn btn-success">
-			Adicionar documento
-		</a>
-	{% endif %}
-	<br><br>
 
 	<h2>Documentos</h2>
 	{% for document in object.documents_set.all %}
-		<a href="{{ document.file.url }}">{{ document }}</a><br
+		<a href="{{ document.file.url }}">{{ document }}</a><br>
 	{% endfor %}
+	<br>
+	{% if object %}
+	<a href="{% url 'document_create' object.id %}" class="btn btn-success">
+		Adicionar documento
+	</a>
+	{% endif %}
+	<br><br>
+
+	<h2>Horas extra</h2>
+	{% for overtime_record in object.overtimerecord_set.all %}
+		<li>
+			<a href="{% url 'overtime_record_update' overtime_record.id %}">{{ overtime_record }} - {{ overtime_record.hours }}</a><br>
+		</li>
+	{% endfor %}
+
+	{% if object %}
+		<a href="{% url 'overtime_record_create' %}" class="btn btn-success">
+			Adicionar hora extra
+		</a>
+	{% endif %}
+
+	<h3>Total de horas extras: {{ object.total_hours }}</h3>
 {% endblock %}
